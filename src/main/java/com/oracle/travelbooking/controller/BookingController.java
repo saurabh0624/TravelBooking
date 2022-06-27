@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oracle.travelbooking.entity.Booking;
+import com.oracle.travelbooking.exception.BookingException;
 import com.oracle.travelbooking.service.BookingService;
 
 @RestController
@@ -28,7 +29,7 @@ public class BookingController {
 	}
 	
 	@GetMapping("/bookings/{id}")
-	public Booking getBookingById(@PathVariable("id") Long bookingId) {
+	public Booking getBookingById(@PathVariable("id") Long bookingId) throws BookingException {
 		return bookingService.getBookingsById(bookingId);
 	}
 

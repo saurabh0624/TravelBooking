@@ -38,7 +38,5 @@ public class Booking {
 	private int bookingAmount;
 	
 	private String paymentStatus;
-	
-	
 
 }
