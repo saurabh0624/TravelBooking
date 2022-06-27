@@ -1,11 +1,14 @@
 package com.oracle.travelbooking.entity;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.TreeSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -23,7 +26,7 @@ public class Booking {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long bookingId;
 	
-	private Date bookingDate;
+	private LocalDate bookingDate;
 	
 	@NotNull
 	@NotBlank
@@ -31,10 +34,11 @@ public class Booking {
 	
 	private String hotelName;
 	
-	private String activities;
+	private TreeSet<String> activities;
 	
 	private String vehicle;
 	
+	@Min(0)
 	private int bookingAmount;
 	
 	private String paymentStatus;

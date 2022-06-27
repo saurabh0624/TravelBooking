@@ -22,6 +22,9 @@ public class BookingService {
 	
 	public Booking saveBooking(Booking booking) {
 		
+		if(Objects.isNull(booking.getBookingDate()) || "".equals(booking.getBookingDate()))
+			booking.setBookingDate(java.time.LocalDate.now());
+		
 		return bookingRepository.save(booking);
 	}
 
@@ -72,7 +75,7 @@ public class BookingService {
 			return bookingRepository.save(bookingDB);
 		} catch (BookingException e) {
 			
-			return bookingRepository.save(booking);
+			return saveBooking(booking);
 		}
 		
 		
